@@ -1,2 +1,2 @@
 # staging.langlib.xyz
-Learn a foreign language by reading books with quick native language reference and grammar explanations.
+Learn a foreign language by reading books with quick reference in your native language and grammar explanations.
