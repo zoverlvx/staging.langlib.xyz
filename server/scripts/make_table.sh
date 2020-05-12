@@ -1,1 +1,1 @@
-npx knex migrate:make $1
+npx knex migrate:make $1 
