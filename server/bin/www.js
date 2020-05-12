@@ -6,7 +6,7 @@ const debug = require("debug");
 function normalizePort(val) {
 	const port = parseInt(val, 10);
 
-	if (isNan(port)) {
+	if (isNaN(port)) {
 		return val;
 	} else if (port >= 0) {
 		return port;

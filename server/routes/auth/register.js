@@ -1,7 +1,7 @@
 // function for registrating the user
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const uuid = require("uuid/v4");
+const {v4: uuidv4 }= require("uuid");
 
 // Model
 const Users = require("../../models")("users");
@@ -85,7 +85,7 @@ module.exports = function(req, res) {
 				+ lastName.substr(1).toLowerCase();
 			
 			// assign uuid
-			credentials.id = uuid();
+			credentials.id = uuidv4();
 
 			// add user to database
 			Users.add(credentials)
@@ -119,7 +119,7 @@ module.exports = function(req, res) {
 					// send response
 					} else if (!user) {
 						res.status(404).json({
-							"User not found."
+							message: "User not found."
 						});						
 					}
 				}).catch(function(err) {
