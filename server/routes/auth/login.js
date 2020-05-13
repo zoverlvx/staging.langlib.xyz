@@ -8,7 +8,7 @@ const Users = require("../../models")("users");
 const generateToken = require("../../config/generateToken.js");
 
 module.exports = function (req, res) {
-	
+
 	// checks that email is data type string
 	// and that the length is at least one char
 	const email = 
