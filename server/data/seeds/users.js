@@ -1,11 +1,13 @@
 const bcrypt = require("bcryptjs");
 const password = bcrypt.hashSync("password", 14);
+const secrets = require("../../config/secrets.js");
+const {dbEnvironment} = secrets;
 
 exports.seed = function(knex) {
 	// if using development or staging db env
 	if (
-		process.env.DB_ENV === "development" 
-		|| process.env.DB_ENV === "staging"
+		dbEnvironment === "development" 
+		|| dbEnvironment === "staging"
 	) {
 		// Deletes ALL existing entries
 		return knex("users").del()
@@ -23,7 +25,7 @@ exports.seed = function(knex) {
 			});	
 	// if using production db env
 	} else if (
-		process.env.DB_ENV === "production" 
+		dbEnvironment === "production" 
 	) {
 		return knex("users").del()
 			.then(function () {
