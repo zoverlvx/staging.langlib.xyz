@@ -16,18 +16,9 @@ module.exports = function (table) {
 
 	// adds item to database
 	// item: object
-	/* old version
-	function add(item) {
-		return db(table)
-			// inserts into database
-			.insert(item, "id")
-			// returns newly inserted item
-			.then(([id]) => findById(id)); // object
-	}
-	*/
-	function add(item) {
-		db(table).insert(item, "id");
-		return findBy({id: item.id});
+	async function add(item) {
+		await db(table).insert(item, "id");
+		return await db(table).select("*").where("id", item.id);
 	}
 
 	// finds first instance of item by property of item

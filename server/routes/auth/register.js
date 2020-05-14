@@ -86,11 +86,11 @@ module.exports = function(req, res) {
 			
 			// assign uuid
 			credentials.id = uuidv4();
-			console.log("credentials: ", credentials);
 
 			// add user to database
 			Users.add(credentials)
 				.then(function(user) {
+
 					// if nothing goes wrong
 					if (user) {
 						// delete password before sending response
