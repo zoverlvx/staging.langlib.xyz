@@ -1,27 +1,204 @@
 import React, { useState } from "react";
 import FlipPage from "react-flip-page";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+
+function rand() {
+	return Math.round(Math.random() * 20) -10;
+}
+
+function getModalStyle() {
+	const top = 50 + rand();
+	const left = 50 + rand();
+
+	return {
+		top: `${top}%`,
+		left: `${left}%`,
+		transform: `translate(-${top}%, -${left}%)`
+	};
+}
+
+const useStyles = makeStyles(theme => ({
+	modal: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center"
+	},
+	paper: {
+		position: "absolute",
+		width: 450,
+		backgroundColor: theme.palette.background.paper,
+		boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3)
+	}
+}));
 
 export default function() {
 
-	const defaultPages = [
-		{
-			text: "In St. Jago, der Hauptstadt des Königreichs Chili, stand gerade in dem Augenblicke der grossen Erderschütterung vom Jahre 1647, bei welcher viele tausend Menschen ihren Untergang fanden, ein junger, auf ein Verbrechen angeklagter Spanier namens Jeronimo Rugera an einem Pfeiler des Gefängnisses, in welches man ihn eingesperrt hatte, und wollte sich erhenken. Don Henrico Asteron, einer der reichsten Edelleute der Stadt, hatte ihn ohngefähr ein Jahr zuvor aus seinem Hause, wo er als Lehrer angestellt war, entfernt, weil er sich mit Donna Josephe, seiner einzigen Tochter, in einem zärtlichen Einverständnis befunden hatte."
-		},
-		{text: "page two"},
-		{text: "page three"},
-		{text: "page four"},
-		{text: "page five"},
-		{text: "page six"},
-		{text: "page seven"},
-		{text: "page eight"},
-		{text: "page nine"},
-		{text: "page ten"}
-	];
+	const classes = useStyles();
+	const [modalStyle] = useState(getModalStyle);
+	const [open, setOpen] = useState(false);
 
-	function createPages(page, i) {
-		return <div key={`${page.text}-${i}`}>{page.text}</div>;
+	function handleOpen() {
+		setOpen(true);
 	}
 
+	function handleClose() {
+		setOpen(false);
+	}
+
+	const defaultPages = [
+		{	number: "1",
+			text: [ 
+				{word: "In"},
+				{word: "St. Jago"},
+				{word: "der" },
+				{word: "Hauptstadt", original: "die Hauptstadt"},
+				{word: "des"},
+				{word: "Königreichs", original: "das Königreich"},
+				{word: "Chili,", original: "Chili"},
+				{word: "stand", original: "stehen"},
+				{word: "gerade", pos: "adverb"},
+				{word: "in", pos: "preposition"},
+				{word: "dem"},
+				{word: "Augenblicke", original: "der Augenblick"},
+				{word: "der"},
+				{word: "grossen", original: "gross"},
+				{word: "Erderschütterung", original: "die Erderschütterung"},
+				{word: "vom", details: "vom + dem = vom"},
+				{word: "Jahre", original: "Jahr"},
+				{word: "1647,", original: "1647"},
+				{word: "bei", pos: "preposition"},
+				{word: "welcher", original: "welch"},
+				{word: "viele", original: "viel"},
+				{word: "tausend"},
+				{word: "Menschen", original: "der Mensch"},
+				{word: "ihren", original: "ihr"},
+				{word: "Untergang", original: "der Untergang"},
+				{word: "fanden,", original: "finden"},
+				{word: "ein"},
+				{word: "junger,", original: "jung"},
+				{word: "auf"},
+				{word: "ein"},
+				{word: "Verbrechen", original: "das Verbrechen"},
+				{word: "angeklagter", original: "angeklagt"},
+				{word: "Spanier"},
+				{word: "namens"},
+				{word: "Jeronimo Rugera"},
+				{word: "an", pos: "preposition"},
+				{word: "einem", original: "ein"},
+				{word: "Pfeiler", original: "der Pfeiler"},
+				{word: "des"},
+				{word: "Gefängnisses,", original: "das Gefängnis"},
+				{word: "in", pos: "preposition"},
+				{word: "welches", original: "welch"},
+				{word: "man"},
+				{word: "ihn"},
+				{word: "eingesperrt", original: "einsperren"},
+				{word: "hatte,", original: "haben"},
+				{word: "und"},
+				{word: "wollte", original: "wollen"},
+				{word: "sich"},
+				{word: "erhenken.", original: "erhenken"},
+				{word: "Don Henrico Asteron,", original: "Don Henrico Asteron"},
+				{word: "einer", original: "ein"},
+				{word: "der"},
+				{word: "reichsten", original: "reich"},
+				{word: "Edelleute", original: "die Edelleute"},
+				{word: "der"},
+				{word: "Stadt,", original: "die Stadt"},
+				{word: "hatte", original: "haben"},
+				{word: "ihn"},
+				{word: "ohngefähr"},
+				{word: "ein"},
+				{word: "Jahr", original: "das Jahr"},
+				{word: "zuvor"},
+				{word: "aus", pos: "dative preposition"},
+				{word: "Hause,", original: "das Haus"},
+				{word: "wo"},
+				{word: "er", pos: "third person singular pronoun"},
+				{word: "als"},
+				{word: "Lehrer", original: "der Lehrer"},
+				{word: "angestellt", original: "anstellen"},
+				{word: "war,", original: "sein"},
+				{word: "entfernt,", original: "entfernen"},
+				{word: "weil"},
+				{word: "er"},
+				{word: "sich"},
+				{word: "mit", pos: "dative preposition"},
+				{word: "Donna Joesphe,", original: "Donna Josephe"},
+				{word: "seiner"},
+				{word: "einzigen", original: "einzig"},
+				{word: "Tochter,", original: "die Tochter"},
+				{word: "in"},
+				{word: "einem"},
+				{word: "zärtlichen", original: "zärtlich"},
+				{word: "Einverständnis", original: "das Einverständnis"},
+				{word: "befunden", original: "befinden"},
+				{word: "hatte.", original: "haben"}
+            ]
+		},
+
+		{
+			number: "2",
+			text: [
+				{word: "Die"}, 
+				{word: "zweite"}, 
+				{word: "Seite.", original: "die Seite"}
+			]
+		},
+		
+		{
+			number: "3",
+			text: [
+				{word: "Die"},
+				{word: "dritte"},
+				{word: "Seite.", original: "die Seite"}
+			]
+		},
+	];
+
+	function handleClick(e) {
+		e.preventDefault();
+		handleOpen();
+	}
+
+	function createText(page) {
+		return page.text.map(function(item, i) {
+			return (
+				<span 
+					key={`${i}-${item.word}`}
+				>
+					<span 
+						onClick={handleClick}
+					>
+						{`${item.word} `}
+					</span>
+					<Modal
+						open={open}
+						onClose={handleClose}
+					>
+						<div
+							style={modalStyle}
+							className={classes.paper}
+						>
+							<h2>
+								{
+									item.word
+								}
+							</h2>
+							<p>Description</p>
+						</div>
+					</Modal>
+				</span>
+			);
+		});
+	}
+
+	function createPages(page, i) {
+		return <div key={`${page.number}`}>{createText(page)}</div>;
+	}
+	
 	const pages = defaultPages.map(createPages);
 
 	return (
@@ -39,5 +216,3 @@ export default function() {
 		</div>
 	);
 }
-
-export default App;
