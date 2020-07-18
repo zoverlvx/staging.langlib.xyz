@@ -30,6 +30,11 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3)
+	},
+	word: {
+		"&:hover": {
+			backgroundColor: "yellow"
+		}
 	}
 }));
 
@@ -38,8 +43,10 @@ export default function() {
 	const classes = useStyles();
 	const [modalStyle] = useState(getModalStyle);
 	const [open, setOpen] = useState(false);
+	const [activeWord, setActiveWord] = useState({word: "default"});
 
-	function handleOpen() {
+	function handleOpen(page) {
+		setActiveWord(page);
 		setOpen(true);
 	}
 
@@ -50,39 +57,138 @@ export default function() {
 	const defaultPages = [
 		{	number: "1",
 			text: [ 
-				{word: "In"},
-				{word: "St. Jago"},
-				{word: "der" },
-				{word: "Hauptstadt", original: "die Hauptstadt"},
-				{word: "des"},
-				{word: "Königreichs", original: "das Königreich"},
-				{word: "Chili,", original: "Chili"},
-				{word: "stand", original: "stehen"},
-				{word: "gerade", pos: "adverb"},
-				{word: "in", pos: "preposition"},
-				{word: "dem"},
-				{word: "Augenblicke", original: "der Augenblick"},
-				{word: "der"},
-				{word: "grossen", original: "gross"},
-				{word: "Erderschütterung", original: "die Erderschütterung"},
-				{word: "vom", details: "vom + dem = vom"},
-				{word: "Jahre", original: "Jahr"},
-				{word: "1647,", original: "1647"},
-				{word: "bei", pos: "preposition"},
-				{word: "welcher", original: "welch"},
-				{word: "viele", original: "viel"},
-				{word: "tausend"},
-				{word: "Menschen", original: "der Mensch"},
-				{word: "ihren", original: "ihr"},
-				{word: "Untergang", original: "der Untergang"},
-				{word: "fanden,", original: "finden"},
-				{word: "ein"},
-				{word: "junger,", original: "jung"},
-				{word: "auf"},
-				{word: "ein"},
-				{word: "Verbrechen", original: "das Verbrechen"},
-				{word: "angeklagter", original: "angeklagt"},
-				{word: "Spanier"},
+				{
+					word: "In", 
+					translation: "in"
+				},
+				{
+					word: "St. Jago", 
+					translation: "Santiago"
+				},
+				{
+					word: "der", 
+					translation: "the"
+				},
+				{
+					word: "Hauptstadt", 
+					original: "die Hauptstadt",
+					translation: "capital"
+				},
+				{
+					word: "des",
+					translation: "of the"
+				},
+				{
+					word: "Königreichs", 
+					original: "das Königreich",
+					translation: "kingdom"
+				},
+				{
+					word: "Chili", 
+					translation: "Chile"
+				},
+				{
+					word: ",",
+					translation: "In Santiago, the capital of the kingdom of Chile,"
+				},
+				{
+					word: "stand", 
+					original: "stehen"
+				},
+				{
+					word: "gerade", 
+					pos: "adverb",
+					translation: "was standing"
+				},
+				{
+					word: "in", 
+					pos: "preposition"
+				},
+				{
+					word: "dem"
+				},
+				{
+					word: "Augenblicke", 
+					original: "der Augenblick"
+				},
+				{
+					word: "der"
+				},
+				{
+					word: "grossen", 
+					original: "gross"
+				},
+				{
+					word: "Erderschütterung", 
+					original: "die Erderschütterung"
+				},
+				{
+					word: "vom", 
+					details: "vom + dem = vom"
+				},
+				{
+					word: "Jahre", 
+					original: "Jahr"
+				},
+				{
+					word: "1647,", 
+					original: "1647"
+				},
+				{
+					word: "bei", 
+					pos: "preposition"
+				},
+				{
+					word: "welcher", 
+					original: "welch"
+				},
+				{
+					word: "viele", 
+					original: "viel"
+				},
+				{
+					word: "tausend"
+				},
+				{
+					word: "Menschen", 
+					original: "der Mensch"
+				},
+				{
+					word: "ihren", 
+					original: "ihr"
+				},
+				{
+					word: "Untergang", 
+					original: "der Untergang"
+				},
+				{
+					word: "fanden,", 
+					original: "finden"
+				},
+				{
+					word: "ein"
+				},
+				{
+					word: "junger,", 
+					original: "jung"
+				},
+				{
+					word: "auf"
+				},
+				{
+					word: "ein"
+				},
+				{
+					word: "Verbrechen", 
+					original: "das Verbrechen"
+				},
+				{
+					word: "angeklagter", 
+					original: "angeklagt"
+				},
+				{
+					word: "Spanier"
+				},
 				{word: "namens"},
 				{word: "Jeronimo Rugera"},
 				{word: "an", pos: "preposition"},
@@ -158,39 +264,21 @@ export default function() {
 		},
 	];
 
-	function handleClick(e) {
+	function handleClick(e, page) {
 		e.preventDefault();
-		handleOpen();
+		handleOpen(page);
 	}
 
 	function createText(page) {
 		return page.text.map(function(item, i) {
 			return (
-				<span 
-					key={`${i}-${item.word}`}
-				>
 					<span 
-						onClick={handleClick}
+						key={`${i}-${item.word}`}
+						className={classes.word}
+						onClick={(e) => handleClick(e, item)}
 					>
 						{`${item.word} `}
 					</span>
-					<Modal
-						open={open}
-						onClose={handleClose}
-					>
-						<div
-							style={modalStyle}
-							className={classes.paper}
-						>
-							<h2>
-								{
-									item.word
-								}
-							</h2>
-							<p>Description</p>
-						</div>
-					</Modal>
-				</span>
 			);
 		});
 	}
@@ -213,6 +301,24 @@ export default function() {
 			>
 				{pages}
 			</FlipPage>
+			<Modal
+				open={open}
+				onClose={handleClose}
+			>
+				<div
+					style={modalStyle}
+					className={classes.paper}
+				>
+					<h2>
+						{
+							activeWord.original
+								? activeWord.original
+								: activeWord.word
+						}
+					</h2>
+					<p>Description</p>
+				</div>
+			</Modal>
 		</div>
 	);
 }
