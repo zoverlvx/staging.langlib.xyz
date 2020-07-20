@@ -31,11 +31,11 @@ const useStyles = makeStyles(theme => ({
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3)
 	},
-	word: {
-		"&:hover": {
-			backgroundColor: "yellow"
-		}
-	}
+	//word: {
+	//	"&:hover": {
+	//		backgroundColor: "yellow"
+	//	}
+	//}
 }));
 
 export default function() {
@@ -44,6 +44,7 @@ export default function() {
 	const [modalStyle] = useState(getModalStyle);
 	const [open, setOpen] = useState(false);
 	const [activeWord, setActiveWord] = useState({word: "default"});
+	const [hoveredWord, setHovered] = useState(null);
 
 	function handleOpen(page) {
 		setActiveWord(page);
@@ -269,12 +270,25 @@ export default function() {
 		handleOpen(page);
 	}
 
+	function handleHover(e, key) {
+		e.preventDefault();
+		setHovered(key);
+	}
+
 	function createText(page) {
 		return page.text.map(function(item, i) {
+			const key = `${i}-${item.word}`;
 			return (
 					<span 
-						key={`${i}-${item.word}`}
-						className={classes.word}
+						style={{
+							backgroundColor: 
+								hoveredWord === key 
+									? "yellow" 
+									: "white"
+						}}
+						onMouseOver={(e) => handleHover(e, key)}
+						key={key}
+						className="word"
 						onClick={(e) => handleClick(e, item)}
 					>
 						{`${item.word} `}
@@ -298,6 +312,7 @@ export default function() {
 			<FlipPage
 				orientation="horizontal"
 				height={500}
+				swipeImmune={[".word"]}
 			>
 				{pages}
 			</FlipPage>
