@@ -30,12 +30,7 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3)
-	},
-	//word: {
-	//	"&:hover": {
-	//		backgroundColor: "yellow"
-	//	}
-	//}
+	}
 }));
 
 export default function() {
@@ -85,12 +80,9 @@ export default function() {
 					translation: "kingdom"
 				},
 				{
-					word: "Chili", 
-					translation: "Chile"
-				},
-				{
-					word: ",",
-					translation: "In Santiago, the capital of the kingdom of Chile,"
+					word: "Chili,", 
+					translation: "Chile",
+					fragment: "In Santiago, the capital of the kingdom of Chile,"
 				},
 				{
 					word: "stand", 
@@ -277,22 +269,40 @@ export default function() {
 
 	function createText(page) {
 		return page.text.map(function(item, i) {
+			// creates key identifier
 			const key = `${i}-${item.word}`;
+
+			
+			const l = item.word.length - 1;
+			const lastLetter = item.word[l];
+			
+			// if the word ends in punctuation
+			// removes punctuation 
+			// before the word is shown in the modal
+			const wordForModal = {
+				...item,
+				word: 
+					lastLetter === "."
+					|| lastLetter === ","
+						? item.word.replace(/[.,]/g, "")
+						: item.word 
+			};
+
 			return (
-					<span 
-						style={{
-							backgroundColor: 
-								hoveredWord === key 
-									? "yellow" 
-									: "white"
-						}}
-						onMouseOver={(e) => handleHover(e, key)}
-						key={key}
-						className="word"
-						onClick={(e) => handleClick(e, item)}
-					>
-						{`${item.word} `}
-					</span>
+				<span 
+					style={{
+						backgroundColor: 
+							hoveredWord === key 
+								? "yellow" 
+								: "white"
+					}}
+					onMouseOver={(e) => handleHover(e, key)}
+					key={key}
+					className="word"
+					onClick={(e) => handleClick(e, wordForModal)}
+				>
+					{`${item.word} `}
+				</span>
 			);
 		});
 	}
