@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import FlipPage from "react-flip-page";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Modal from "@material-ui/core/Modal";
-import data from "./data/pages.js";
+import bookData from "./data/books/dasErdbebenInChili";
+
+// CSS magic 
 
 function rand() {
 	return Math.round(Math.random() * 20) -10;
@@ -34,32 +38,47 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function() {
+// end of CSS magic
 
+export default function() {
 	const classes = useStyles();
 	const [modalStyle] = useState(getModalStyle);
-	const [open, setOpen] = useState(false);
-	const [activeWord, setActiveWord] = useState({word: "default"});
-	const [hoveredWord, setHovered] = useState(null);
 
+	// open the modal
+	const [open, setOpen] = useState(false);
+	// set this word on the modal
+	const [activeWord, setActiveWord] = useState({word: "default"});
+	// highlight the word
+	const [hoveredWord, setHovered] = useState(null);
+	// sets the dictionary type of what information will be available
+	// about the words in the book
+	const [dictType, setDictType] = useState(bookData["definitions"]);
+
+	// set the word for the modal
+	// open the modal
 	function handleOpen(page) {
 		setActiveWord(page);
 		setOpen(true);
 	}
 
+	// close the modal
 	function handleClose() {
 		setOpen(false);
 	}
-
-	const defaultPages = data;
-
 	
-
+    // handle opening the modal
 	function handleClick(e, page) {
 		e.preventDefault();
 		handleOpen(page);
 	}
 
+    // handle changing the type of dictionary information for the words
+	function handleDictClick(e, dt) {
+		e.preventDefault();
+		setDictType(bookData[dt])
+	} 
+
+    // handle hovering over the word
 	function handleHover(e, key) {
 		e.preventDefault();
 		setHovered(key);
@@ -109,21 +128,48 @@ export default function() {
 		return <div key={`${page.number}`}>{createText(page)}</div>;
 	}
 	
-	const pages = defaultPages.map(createPages);
+	const pages = dictType.map(createPages);
 
 	return (
-		<div style={{
-			marginTop: "50px",
-			display: "flex", 
-			justifyContent: "center"
-		}}>
-			<FlipPage
-				orientation="horizontal"
-				height={500}
-				swipeImmune={[".word"]}
-			>
-				{pages}
-			</FlipPage>
+		<div>
+			<div style={{
+				marginTop: "50px",
+				display: "flex", 
+				justifyContent: "center"
+			}}>
+				<FlipPage
+					orientation="horizontal"
+					height={500}
+					swipeImmune={[".word"]}
+				>
+					{pages}
+				</FlipPage>
+			</div>
+			<div style={{
+				display: "flex",
+				justifyContent: "center"
+			}}>
+				<ButtonGroup
+					size="large"
+					variant="outlined"
+				>
+					<Button
+						onClick={e => handleDictClick(e, "definitions")}
+					>
+						Definitions
+					</Button>
+					<Button
+						onClick={e => handleDictClick(e, "grammar")}
+					>
+						Grammar	
+					</Button>
+					<Button
+						onClick={e => handleDictClick(e, "translation")}
+					>
+						Translation
+					</Button>
+				</ButtonGroup>
+			</div>
 			<Modal
 				open={open}
 				onClose={handleClose}

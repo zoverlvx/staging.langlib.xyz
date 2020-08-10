@@ -212,7 +212,7 @@ export default [
 					partOfSpeech: "noun"
 				},
 				{
-					word: "des"
+					word: "des",
 					translation: "of the",
 					partOfSpeech: "definite article"
 				},
@@ -224,7 +224,7 @@ export default [
 				},
 				{
 					word: "in",
-					translation: "in" 
+					translation: "in",
 					partOfSpeech: "preposition"
 				},
 				{
@@ -370,35 +370,109 @@ export default [
 					partOfSpeech: "pronoun"
 				},
 				{
-					word: "als"
+					word: "als",
+					translation: "as",
+					partOfSpeech: "conjunction"
 				},
 				{
 					word: "Lehrer", 
-					original: "der Lehrer"
+					original: "der Lehrer",
+					translation: "teacher",
+					partOfSpeech: "noun"
 				},
 				{
 					word: "angestellt", 
-					original: "anstellen"
+					original: "anstellen",
+					translation: "employed",
+					partOfSpeech: "past participle"
 				},
 				{
 					word: "war,", 
-					original: "sein",
+					original: "waren",
+					translation: "was",
+					pastOfSpeech: "verb"
 				},
-				{word: "entfernt,", original: "entfernen"},
-				{word: "weil"},
-				{word: "er"},
-				{word: "sich"},
-				{word: "mit", pos: "dative preposition"},
-				{word: "Donna Joesphe,", original: "Donna Josephe"},
-				{word: "seiner"},
-				{word: "einzigen", original: "einzig"},
-				{word: "Tochter,", original: "die Tochter"},
-				{word: "in"},
-				{word: "einem"},
-				{word: "zärtlichen", original: "zärtlich"},
-				{word: "Einverständnis", original: "das Einverständnis"},
-				{word: "befunden", original: "befinden"},
-				{word: "hatte.", original: "haben"}
+				{
+					word: "entfernt,", 
+					original: "entfernen",
+					translation: "dismissed",
+					partOfSpeech: "past participle"
+				},
+				{
+					word: "weil",
+					translation: "because",
+					partOfSpeech: "conjunction"
+				},
+				{
+					word: "er",
+					translation: "he",
+					partOfSpeech: "pronoun"
+				},
+				{
+					word: "sich",
+					translation: "himself",
+					partOfSpeech: "reflexive pronoun"
+				},
+				{
+					word: "mit",
+					translation: "with", 
+					partOfSpeech: "preposition"
+				},
+				{
+					word: "Donna Joesphe,",
+					partOfSpeech: "proper noun"
+				},
+				{
+					word: "seiner",
+					translation: "his",
+					partOfSpeech: "possessive adjective"
+				},
+				{
+					word: "einzigen", 
+					original: "einzig",
+					translation: "only",
+					partOfSpeech: "adjective"
+				},
+				{
+					word: "Tochter,", 
+					original: "die Tochter",
+					translation: "daughter",
+					partOfSpeech: "noun"
+				},
+				{
+					word: "in",
+					translation: "in",
+					partOfSpeech: "preposition"
+				},
+				{
+					word: "einem",
+					translation: "a/an",
+					partOfSpeech: "indefinite article"
+				},
+				{
+					word: "zärtlichen", 
+					original: "zärtlich",
+					translation: "tender",
+					partOfSpeech: "adjective"
+				},
+				{
+					word: "Einverständnis", 
+					original: "das Einverständnis",
+					translation: "consent",
+					partOfSpeech: "noun"
+				},
+				{
+					word: "befunden", 
+					original: "befinden",
+					translation: "found",
+					partOfSpeech: "past participle"
+				},
+				{
+					word: "hatte.", 
+					original: "haben",
+					translation: "had",
+					partOfSpeech: "verb"
+				}
             ]
 		},
 
