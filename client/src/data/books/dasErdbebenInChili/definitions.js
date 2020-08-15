@@ -126,7 +126,7 @@ export default [
 				},
 				{
 					word: "Menschen", 
-					original: "sing: der Mensch, pl: die Menschen",
+					original: "die Menschen",
 					translation: "people",
 					partOfSpeech: "noun"
 				},
@@ -329,7 +329,7 @@ export default [
 				},
 				{
 					word: "ohngefähr",
-					translation: "accidentally",
+					translation: "almost",
 					partOfSpeech: "adverb"
 				},
 				{
@@ -419,7 +419,7 @@ export default [
 					partOfSpeech: "preposition"
 				},
 				{
-					word: "Donna Joesphe,",
+					word: "Donna Josephe,",
 					partOfSpeech: "proper noun"
 				},
 				{

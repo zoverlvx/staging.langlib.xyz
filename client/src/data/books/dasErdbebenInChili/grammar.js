@@ -2,225 +2,135 @@ export default [
 		{	number: "1",
 			text: [ 
 				{
-					word: "In", 
-					translation: "in",
-					partOfSpeech: "preposition"
+					word: "In St. Jago der Hauptstadt", 
+					translation: "In Santiago, the capital city",
+					term: "Dative Case",
+					
+					context: "This is in the Dative Case because of the preposition 'in'."
 				},
 				{
-					word: "St. Jago", 
-					translation: "Santiago",
-					partOfSpeech: "proper noun"
-				},
-				{
-					word: "der", 
-					translation: "the",
-					partOfSpeech: "definite article",
-					context: "This is in the Dative case because of the preposition."
-				},
-				{
-					word: "Hauptstadt", 
-					original: "die Hauptstadt",
-					translation: "capital",
-					partOfSpeech: "noun",
-					context: "This is in the Dative case because of the preposition."
-				},
-				{
-					word: "des",
-					translation: "of the",
-					partOfSpeech: "definite article",
-					context: "This is in the Genitive case to show possession. The capital belongs to the kingdom."
-				},
-				{
-					word: "Königreichs", 
-					original: "das Königreich",
-					translation: "kingdom",
-					partOfSpeech: "noun",
-					context: "The -s is added to the noun because it is in the Genitive case."
-				},
-				{
-					word: "Chili,", 
-					translation: "Chile",
-					partOfSpeech: "proper noun",
-					fragment: "In Santiago, the capital of the kingdom of Chile,"
+					word: "des Königreichs Chili,",
+					translation: "of the kingdom of Chili",
+					term: "Genitive Case",
+					context: "This is in the Genitive Case to show possession. The capital belongs to the kingdom. The -s is added to 'Königreich' because it is in the Genitive case."
 				},
 				{
 					word: "stand gerade", 
-					partOfSpeech: "past tense verb with adverb",
 					translation: "was standing",
 					context: "'stand gerade' is a verb/adverb combination that suggests that Jeronimo 'was standing' during another event that took place in the past."
 				},
 				{
-					word: "in",
-					translation: "in", 
-					partOfSpeech: "preposition"
+					word: "in dem Augenblicke",
+					translation: "Lit: in the blink of an eye\nat the moment", 
+					term: "Dative Case",
+					context: "Singular masculine and neuter nouns with one syllable receive an -e when in the Dative Case. While 'Augenblick' is a compound noun, the rule still applies to the word 'Blick' which is monosyllabic or one syllable."
 				},
 				{
-					word: "dem",
-					translation: "the",
-					partOfSpeech: "definite article",
-					context: "This is in the Dative case because of the preposition."
+					word: "der grossen Erderschütterung",
+					translation: "of the great earthquake",
+					term: "Genitive Case",
+					context: "This is in the Genitive case. The -en is added to the adjective 'gross' because it is after a Genitive definite article."
 				},
 				{
-					word: "Augenblicke", 
-					original: "der Augenblick",
-					translation: "blink of an eye",
-					partOfSpeech: "noun"
-				},
-				{
-					word: "der",
-					translation: "of the",
-					partOfSpeech: "definite article",
-					context: "This is in the Genitive case: the moment of the great earthquake"
-				},
-				{
-					word: "grossen", 
-					original: "gross",
-					translation: "great",
-					partOfSpeech: "adjective",
-					context: "-en is added to the adjective because it is after a Genitive definite article."
-				},
-				{
-					word: "Erderschütterung", 
-					original: "die Erderschütterung",
-					translation: "earthquake",
-					partOfSpeech: "noun"
+					word: "vom Jahre 1647,",
+					translation: "of the year 1647",
+					term: "Dative Case",
+					context: "'vom' is the contraction of the preposition 'von' with the article 'dem.' The -e is added to the noun 'Jahr' because it is a singular neuter noun with one syllable in the Dative Case."
 					
 				},
 				{
-					word: "vom",
-					original: "von dem",
-					translation: "from the",
-					partOfSpeech: "preposition and article contraction",
-					context: "This is the contraction of the preposition 'von' with the article 'dem'"
-					
+					word: "bei welcher viele tausend Menschen ihren Untergang fanden,",
+					translation: "by which many thousands of people met their doom,",
+					term: "Dative Case",
+					context: "'bei welcher' is in the feminine Dative Case because it is referring to 'die Erderschütterung' by which thousands met their doom."
 				},
 				{
-					word: "Jahre", 
-					original: "das Jahr",
-					translation: "year",
-					partOfSpeech: "noun",
-					context: "The -e is added to the noun because it is a single neutral noun with one syllable in the Dative case."
+					word: "ein junger,",
+					translation: "a young",
+					term: "Nominative Case",
+					context: "-er is added to the adjective 'jung' because it comes after an indefinite article and because the noun 'Spanier' is masculine."
 				},
 				{
-					word: "1647,", 
-					original: "1647",
-					partOfSpeech: "noun",
-					fragment: "at the very moment of the great earthquake of the year 1647,"
+					word: "auf ein Verbrechen angeklagter Spanier",
+					translation: "Spaniard, accused of a crime,",
+					term: "Nominative Case",
+					context: "'angeklagt'(accused) takes the -er ending because it is being used as an adjective to describe the masculine singular noun 'Spanier'"
 				},
 				{
-					word: "bei",
-					translation: "by", 
-					partOfSpeech: "preposition"
+					word: "namens Jeronimo Rugera",
+					translation: "by the name of Jeronimo Rugera"
 				},
 				{
-					word: "welcher", 
-					original: "welch",
-					partOfSpeech: "",
-					context: "In the Dative case (feminine) because it is referring to 'die Erderschütterung'"
+					word: "an einem Pfeiler",
+					translation: "at a pillar",
+					term: "Dative Case",
+					context: "The noun 'Pfeiler' is in the Dative Case because it is after the preposition 'an' which suggests a sense of being at a location."
 				},
 				{
-					word: "viele", 
-					original: "viel"
+					word: "des Gefängnisses,",
+					translation: "of the prison",
+					term: "Genitive Case",
+					context: "Because the noun 'Gefängnis' ends in an 's', and additional 's' then -es is added to it in the Genitive Case."
 				},
 				{
-					word: "tausend"
+					word: "in welches man ihn eingesperrt hatte,", 
+					translation: "in which they had locked him up",
+				    term: "Accusative Case",
+					context: "The ending of 'welches' references the grammatical gender of the noun 'das Gefängnis', which is the location into which they had locked him up."	
 				},
 				{
-					word: "Menschen", 
-					original: "der Mensch"
+					word: "und wollte sich erhenken.",
+					translation: "and wanted to hang himself",
+					term: "Reflexive Pronoun",
+					context: "'sich' refers back to the subject and its actions towards itself. 'sich' is the third-person singular reflexive pronoun and can refer to either 'er', 'sie', or 'es'. In English, this can translated to 'himself', 'herself', or 'itself' depending on context."
 				},
 				{
-					word: "ihren", 
-					original: "ihr"
+					word: "Don Henrico Asteron, einer", 
+					translation: "Don Henrico Asteron, one",
+					term: "Nominative Case",
+					context: "'einer' references back to the grammatical gender of Don which is masculine singular."
 				},
 				{
-					word: "Untergang", 
-					original: "der Untergang"
+					word: "der reichsten Edelleute",
+					translation: "of the richest noblemen",
+					term: "Genitive Case",
+					context: "This is in the Genitive Case to suggest that Don is one of a group of noblemen."
 				},
 				{
-					word: "fanden,", 
-					original: "finden"
+					word: "der Stadt,",
+					translation: "of the city",
+					term: "Genitive Case",
+					context: "This is in the Genitive Case because the noblemen are part of the city. They inhabit it."
+				},
+
+				{
+					word: "hatte ihn ohngefähr ein Jahr zuvor aus Hause,",
+					translation: "had him dismissed from his house about a year earlier",
+					term: "Dative Case",
+					context: "-e is added to the end of the singular neuter noun 'Haus' because it is one syllable and comes after the Dative preposition 'aus'."
+				},
+
+				{
+					word: "wo er als Lehrer angestellt war,", 
+					translation: "where he was employed as a tutor",
+					term: "Subordinating Conjunction",
+					context: "Because 'wo' is a Subordinating Conjunction, the verb goes at the end of the sentence fragment."
+				},
+
+				{
+					word: "entfernt,", 
+					translation: "removed",
+					term: "Past Participle",
+					context: "Don Henrico Asteron hatte Jeronimo entfernt."
 				},
 				{
-					word: "ein"
-				},
-				{
-					word: "junger,", 
-					original: "jung"
-				},
-				{
-					word: "auf"
-				},
-				{
-					word: "ein"
-				},
-				{
-					word: "Verbrechen", 
-					original: "das Verbrechen"
-				},
-				{
-					word: "angeklagter", 
-					original: "angeklagt"
-				},
-				{
-					word: "Spanier"
-				},
-				{word: "namens"},
-				{word: "Jeronimo Rugera"},
-				{word: "an", pos: "preposition"},
-				{word: "einem", original: "ein"},
-				{word: "Pfeiler", original: "der Pfeiler"},
-				{word: "des"},
-				{word: "Gefängnisses,", original: "das Gefängnis"},
-				{word: "in", pos: "preposition"},
-				{word: "welches", original: "welch"},
-				{word: "man"},
-				{word: "ihn"},
-				{word: "eingesperrt", original: "einsperren"},
-				{word: "hatte,", original: "haben"},
-				{word: "und"},
-				{word: "wollte", original: "wollen"},
-				{word: "sich"},
-				{word: "erhenken.", original: "erhenken"},
-				{word: "Don Henrico Asteron,", original: "Don Henrico Asteron"},
-				{word: "einer", original: "ein"},
-				{word: "der"},
-				{word: "reichsten", original: "reich"},
-				{word: "Edelleute", original: "die Edelleute"},
-				{word: "der"},
-				{word: "Stadt,", original: "die Stadt"},
-				{word: "hatte", original: "haben"},
-				{word: "ihn"},
-				{word: "ohngefähr"},
-				{word: "ein"},
-				{word: "Jahr", original: "das Jahr"},
-				{word: "zuvor"},
-				{word: "aus", pos: "dative preposition"},
-				{word: "Hause,", original: "das Haus"},
-				{word: "wo"},
-				{word: "er", pos: "third person singular pronoun"},
-				{word: "als"},
-				{word: "Lehrer", original: "der Lehrer"},
-				{word: "angestellt", original: "anstellen"},
-				{word: "war,", original: "sein"},
-				{word: "entfernt,", original: "entfernen"},
-				{word: "weil"},
-				{word: "er"},
-				{word: "sich"},
-				{word: "mit", pos: "dative preposition"},
-				{word: "Donna Joesphe,", original: "Donna Josephe"},
-				{word: "seiner"},
-				{word: "einzigen", original: "einzig"},
-				{word: "Tochter,", original: "die Tochter"},
-				{word: "in"},
-				{word: "einem"},
-				{word: "zärtlichen", original: "zärtlich"},
-				{word: "Einverständnis", original: "das Einverständnis"},
-				{word: "befunden", original: "befinden"},
-				{word: "hatte.", original: "haben"}
+					word: "weil er sich mit Donna Josephe, seiner einzigen Tochter, in einem zärtlichen Einverständnis befunden hatte.",
+					translation: "because Jeronimo and Donna Josephe, Asteron's only daughter, had fallen in love",
+					term: "Subordinating Conjunction",
+					context: "Because 'weil' is a Subordinating Conjunction, the verb is placed at the end of the sentence."
+				}
             ]
 		},
-
 		{
 			number: "2",
 			text: [
@@ -229,7 +139,6 @@ export default [
 				{word: "Seite.", original: "die Seite"}
 			]
 		},
-		
 		{
 			number: "3",
 			text: [
