@@ -4,7 +4,8 @@ import useHover from "../utils/useHover.js";
 
 export default function(props) {
 	const [hoverRef, isHovered] = useHover();
-	const languagePath = props.language.name.toLowerCase();
+	const path = 
+		props.book.nativeName.toLowerCase().replace(/ /g, "-");
 	const style = {
 		display: "flex",
 		textDecoration: "none",
@@ -21,12 +22,12 @@ export default function(props) {
 		<div ref={hoverRef}>
 			<NavLink 
 				style={style}
-				to={`/${languagePath}`}
+				to={`/${path}`}
 			>
 				{
 					isHovered 
-						? props.language.nativeName 
-						: props.language.name
+						? props.book.name
+						: props.book.nativeName
 				}
 			</NavLink>				
 		</div>

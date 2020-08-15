@@ -1,5 +1,5 @@
 import React from "react";
-import LanguageButtons from "./LanguageButtons.js";
+import BookButtons from "./BookButtons.js";
 
 export default function(props) {
 	const style = {
@@ -13,7 +13,7 @@ export default function(props) {
 	};
 	return (
 		<div style={style}>
-			<LanguageButtons languages={props.languages} />
+			<BookButtons languages={props.books} />
 		</div>
 	);
 }

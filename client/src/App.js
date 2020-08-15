@@ -1,7 +1,7 @@
 import React from "react";
 import Book from "./Book.js";
 import { 
-	BookRoutes, 
+	BooksRoutes, 
 	LanguagesContainer, 
 	LanguageButtons, 
 	LanguageButton
@@ -23,6 +23,22 @@ const languages = [
 	{
 		name: "Spanish",
 		nativeName: "Español"
+	},
+	{
+		name: "Italian",
+		nativeName: "Italiano"
+	},
+	{
+		name: "Portuguese",
+		nativeName: "Português"
+	},
+	{
+		name: "Russian",
+		nativeName: "Русский"
+	},
+	{
+		name: "Dutch",
+		nativeName: "Nederlands"
 	}
 ];
 
@@ -40,7 +56,11 @@ export default function() {
 					);
 				}}
 			/>
-			<BookRoutes languages={languages} />
+			<BooksRoutes languages={languages} />
+			<Route 
+				path="/das-erdbeben-in-chili"
+				render={() => <Book />}
+			/>
 		</div>
 	);
 }

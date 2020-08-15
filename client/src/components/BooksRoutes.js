@@ -1,11 +1,16 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import GermanBooksContainer from "./GermanBooksContainer.js";
 
 function Books(props) {
 	const components = {
-		"german": () => <div>German Books</div>,
-		"french": () => <div>French Books</div>,
-		"spanish": () => <div>Spanish Books</div>
+		"german": () => <GermanBooksContainer />,
+		"french": () => <div>French coming soon!</div>,
+		"spanish": () => <div>Spanish coming soon!</div>,
+		"italian": () => <div>Italian coming soon!</div>,
+		"portuguese": () => <div>Portuguese coming soon!</div>,
+		"russian": () => <div>Russian coming soon!</div>,
+		"dutch": () => <div>Dutch coming soon!</div>
  	};
 	return components[props.language]();
 }
