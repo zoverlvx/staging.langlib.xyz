@@ -6,8 +6,10 @@ configureServer(server);
 
 // Routes
 const auth = require("./routes/auth");
+const languages = require("./routes/languages");
 
 server.use("/api/auth", auth);
+server.use("/api/languages", languages);
 
 server.get("/", function (req, res) {
 	res.status(200).json({
