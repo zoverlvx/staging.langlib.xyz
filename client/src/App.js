@@ -1,66 +1,90 @@
 import React from "react";
-import Book from "./Book.js";
-import { 
-	BooksRoutes, 
-	LanguagesContainer, 
-	LanguageButtons, 
-	LanguageButton
+import {
+	Container,
+	Button
 } from "./components";
-import { NavLink, Route } from "react-router-dom";
-import useHover from "./utils/useHover.js";
+import {Route} from "react-router-dom";
+import axios from "axios";
+import {makeUseAxios} from "axios-hooks";
+import config from "./config"
 
+const { baseURL } = config;
 
+// set up base url
+const useAxios = makeUseAxios({
+	axios: axios.create({baseURL})
+});
 
-const languages = [
-	{
-		name: "German",
-		nativeName: "Deutsch"
-	},
-	{
-		name: "French",
-		nativeName: "Français"
-	},
-	{
-		name: "Spanish",
-		nativeName: "Español"
-	},
-	{
-		name: "Italian",
-		nativeName: "Italiano"
-	},
-	{
-		name: "Portuguese",
-		nativeName: "Português"
-	},
-	{
-		name: "Russian",
-		nativeName: "Русский"
-	},
-	{
-		name: "Dutch",
-		nativeName: "Nederlands"
-	}
-];
 
 export default function() {
+
+	const style = {
+		margin: "10px auto",
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-between",
+		flexWrap: "wrap",
+		//maxWidth: "320px"
+		maxWidth: "400px"		
+	};
+
 	return (
 		<div>
 			<Route 
 				exact path="/" 
 				render={function(props) {
 					return (
-						<LanguagesContainer 
-							languages={languages}
+						<Container
+							style={style} 
+							req="/"
+							mapping={function(language) {
+								const path = language.name.toLowerCase();
+								return {
+									path,
+									defaultText: language.name,
+									onHoverText: language.nativeName
+								};
+							}}
+							type="languages"
 							{...props} 
 						/>
 					);
 				}}
 			/>
-			<BooksRoutes languages={languages} />
+			<Route
+				exact path="/:language"
+				render={function(props) {
+					const { url } = props.match;
+					return (
+						<Container 
+							style={style}
+							req={url}
+							type="books"
+							mapping={function(book) {
+								const bookPath = book.name
+									.toLowerCase()
+									.replace(/ /g, "-");
+								return {
+									path: `${url}/${bookPath}`,
+									defaultText: book.nativeName,
+									onHoverText: book.name
+								};
+							}}
+							{...props}
+						/>
+					);
+				}}
+			/>
 			<Route 
-				path="/das-erdbeben-in-chili"
-				render={() => <Book />}
+				path="/:language/:book"
+				render={function(props) {
+					return <div>Check console</div>;
+				}}
 			/>
 		</div>
 	);
 }
+
+
+
+	
