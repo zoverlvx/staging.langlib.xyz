@@ -1,0 +1,65 @@
+import React from "react";
+import Book from "./Book.js";
+import { 
+	BooksRoutes, 
+	LanguagesContainer, 
+	LanguageButtons, 
+	LanguageButton
+} from "./components";
+import { Route } from "react-router-dom";
+
+
+
+const languages = [
+	{
+		name: "German",
+		nativeName: "Deutsch"
+	},
+	{
+		name: "French",
+		nativeName: "Français"
+	},
+	{
+		name: "Spanish",
+		nativeName: "Español"
+	},
+	{
+		name: "Italian",
+		nativeName: "Italiano"
+	},
+	{
+		name: "Portuguese",
+		nativeName: "Português"
+	},
+	{
+		name: "Russian",
+		nativeName: "Русский"
+	},
+	{
+		name: "Dutch",
+		nativeName: "Nederlands"
+	}
+];
+
+export default function() {
+	return (
+		<div>
+			<Route 
+				exact path="/" 
+				render={function(props) {
+					return (
+						<LanguagesContainer 
+							languages={languages}
+							{...props} 
+						/>
+					);
+				}}
+			/>
+			<BooksRoutes languages={languages} />
+			<Route 
+				path="/das-erdbeben-in-chili"
+				render={() => <Book />}
+			/>
+		</div>
+	);
+}

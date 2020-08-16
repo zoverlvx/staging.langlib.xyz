@@ -12,6 +12,7 @@ const useAxios = makeUseAxios({
 
 
 export default function(props) {
+	
 	if (
 		props.req 
 		&& props.type 

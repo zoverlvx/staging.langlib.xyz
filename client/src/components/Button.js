@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation, useHistory, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useHover from "./utils/useHover.js";
 
 export default function(props) {

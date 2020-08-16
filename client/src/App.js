@@ -1,20 +1,8 @@
 import React from "react";
 import {
-	Container,
-	Button
+	Container
 } from "./components";
-import {Route} from "react-router-dom";
-import axios from "axios";
-import {makeUseAxios} from "axios-hooks";
-import config from "./config"
-
-const { baseURL } = config;
-
-// set up base url
-const useAxios = makeUseAxios({
-	axios: axios.create({baseURL})
-});
-
+import { Route } from "react-router-dom";
 
 export default function() {
 
@@ -76,7 +64,7 @@ export default function() {
 				}}
 			/>
 			<Route 
-				path="/:language/:book"
+				exact path="/:language/:book/:number?"
 				render={function(props) {
 					return <div>Check console</div>;
 				}}
