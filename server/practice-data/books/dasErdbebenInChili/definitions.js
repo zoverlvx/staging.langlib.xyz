@@ -1,4 +1,4 @@
-export default [
+module.exports = [
 		{	number: "1",
 			text: [ 
 				{

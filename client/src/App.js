@@ -1,5 +1,6 @@
 import React from "react";
 import {
+	Book,
 	Container
 } from "./components";
 import { Route } from "react-router-dom";
@@ -66,7 +67,11 @@ export default function() {
 			<Route 
 				exact path="/:language/:book/:number?"
 				render={function(props) {
-					return <div>Check console</div>;
+					return (
+						<Book 
+							req={props.location.pathname}
+						/>
+					);
 				}}
 			/>
 		</div>

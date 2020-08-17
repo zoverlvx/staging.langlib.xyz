@@ -1,4 +1,4 @@
-export default [
+module.exports = [
 		{	number: "1",
 			text: [ 
 				{
@@ -7,7 +7,7 @@ export default [
 
                 },
 				{
-					sentence: "Don Henrico Asteron, einer der reichsten Edelleute der Stadt, hatte ihn ohngefähr ein Jahr zuvor aus Hause, wo er als Lehrer eingestellt war, entfernt, weil er sich mit Donna Josephe, seiner einzigen Tochter, in einem zärtlichen Einverständnis befunden hatte.", 
+					sentence: "Don Henrico Asteron, einer der reichsten Edelleute der Stadt, hatte ihn ohngefähr ein Jahr zuvor aus Hause, wo er als Lehrer angestellt war, entfernt, weil er sich mit Donna Josephe, seiner einzigen Tochter, in einem zärtlichen Einverständnis befunden hatte.", 
 					translation: ""
 				}
             ]

@@ -1,15 +1,6 @@
 import React from "react";
 import makeButton from "./utils/makeButton.js";
-import axios from "axios";
-import { makeUseAxios } from "axios-hooks";
-import config from "../config";
-
-const { baseURL } = config;
-
-const useAxios = makeUseAxios({
-	axios: axios.create({baseURL})
-})
-
+import { useAxios } from "./utils/useAxios.js";
 
 export default function(props) {
 	
