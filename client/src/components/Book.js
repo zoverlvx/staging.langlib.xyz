@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import FlipPage from "react-flip-page";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -41,7 +42,10 @@ const useStyles = makeStyles(theme => ({
 // end of CSS magic
 
 export default function(props) {
-	const [{loading, data, error}] = useAxios(props.req);
+	const params = useParams();
+	const pageNumber = params.number ? Number(params.number) - 1 : 0;
+	const [{loading, data, error}] = 
+		useAxios(`/${params.language}/${params.book}`);
 	const [book, setBook] = useState(null);
 	const [pages, setFilter] = useState([]);	
 	useEffect(() => {
@@ -172,6 +176,7 @@ export default function(props) {
 				justifyContent: "center"
 			}}>
 				<FlipPage
+					startAt={pageNumber}
 					orientation="horizontal"
 					height={500}
 					swipeImmune={[".word"]}
