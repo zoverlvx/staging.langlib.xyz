@@ -35,7 +35,6 @@ export default function() {
 								};
 							}}
 							type="languages"
-							{...props} 
 						/>
 					);
 				}}
@@ -59,7 +58,6 @@ export default function() {
 									onHoverText: book.name
 								};
 							}}
-							{...props}
 						/>
 					);
 				}}
@@ -67,11 +65,7 @@ export default function() {
 			<Route 
 				exact path="/:language/:book/:number?"
 				render={function(props) {
-					return (
-						<Book 
-							req={props.location.pathname}
-						/>
-					);
+					return <Book />;
 				}}
 			/>
 		</div>

@@ -1,9 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import makeButton from "./utils/makeButton.js";
 import { useAxios } from "./utils/useAxios.js";
 
 export default function(props) {
-	
+
 	if (
 		props.req 
 		&& props.type 

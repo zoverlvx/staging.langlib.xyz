@@ -143,7 +143,7 @@ export default function(props) {
 						backgroundColor: 
 							hoveredWord === key 
 								? "yellow" 
-								: "white"
+								: ""
 					}}
 					onMouseOver={(e) => handleHover(e, key)}
 					key={key}
@@ -176,10 +176,12 @@ export default function(props) {
 					justifyContent: "center"
 				}}>
 					<FlipPage
-						style={{ backgroundColor: "#e6d1a0" }}
+						uncutPages={true}
+						pageBackground="#e6d1a0"
 						startAt={pageNumber}
 						orientation="horizontal"
 						height={500}
+						width={407}
 						swipeImmune={[".word"]}
 					>
 						{pages.map(createPages)}
