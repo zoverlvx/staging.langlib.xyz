@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import FlipPage from "react-flip-page";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -42,15 +42,32 @@ const useStyles = makeStyles(theme => ({
 // end of CSS magic
 
 export default function(props) {
+	
+	const location = useLocation();
+	
+	// gets the value of the query
+	const pageNumber = (
+		new URLSearchParams(location.search).get("page") - 1
+	);
+
+	// gets the params
 	const params = useParams();
-	const pageNumber = params.number ? Number(params.number) - 1 : 0;
+
+	// makes request for book in specific language
 	const [{loading, data, error}] = 
 		useAxios(`/${params.language}/${params.book}`);
+
+	// the entire book object
 	const [book, setBook] = useState(null);
+	// the specific classifier by which the words will be viewed
 	const [pages, setFilter] = useState([]);	
+	
 	useEffect(() => {
 		if (data) {
 			setBook(data.book);
+			// default classifier for words on the page
+			// clicking on each word will simply define them
+			// as if having a dictionary immediately available
 			setFilter(data.book["definitions"]);
 		}	
 	}, [data])
@@ -100,7 +117,10 @@ export default function(props) {
 	// sets up the text on the page
 	function createText(page) {
 		return page.text.map(function(item, i) {
-
+			
+			// definitions -> item.word
+			// grammar -> item.word
+			// translation -> item.sentence
 			const word = item.word 
 				? item.word 
 				: item.sentence
@@ -168,17 +188,18 @@ export default function(props) {
 	if (!pages.length) return <div>LOADING...</div>;
 	if (error) return <div>Error</div>;
 	if (pages.length) {
+		const style = {
+			marginTop: "50px",
+			display: "flex",
+			justifyContent: "center"
+		};
 		return (
 			<div>
-				<div style={{
-					marginTop: "50px",
-					display: "flex", 
-					justifyContent: "center"
-				}}>
+				<div style={style}>
 					<FlipPage
 						uncutPages={true}
 						pageBackground="#e6d1a0"
-						startAt={pageNumber}
+						startAt={pageNumber ? pageNumber : 0}
 						orientation="horizontal"
 						height={500}
 						width={407}

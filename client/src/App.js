@@ -53,7 +53,7 @@ export default function() {
 									.toLowerCase()
 									.replace(/ /g, "-");
 								return {
-									path: `${url}/${bookPath}`,
+									path: `${url}/${bookPath}?page=number`,
 									defaultText: book.nativeName,
 									onHoverText: book.name
 								};
@@ -63,7 +63,7 @@ export default function() {
 				}}
 			/>
 			<Route 
-				exact path="/:language/:book/:number?"
+				exact path="/:language/:book"
 				render={function(props) {
 					return <Book />;
 				}}
